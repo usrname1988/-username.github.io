@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💖 我喜欢你</title>
+  <style>
+    /* 页面整体样式 */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* 表白容器 */
+    .confession-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 400px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 2.2em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #333;
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      font-size: 1.1em;
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .yes-btn {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .no-btn {
+      background: #f44336;
+      color: white;
+      position: relative;
+    }
+
+    /* 动画效果 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 可爱的心形装饰 */
+    .heart {
+      color: #e91e63;
+      font-size: 1.5em;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confession-box">
+    <div class="heart">💖</div>
+    <h1>我喜欢你 💕</h1>
+    <p>
+      从遇见你的那一刻起，<br>
+      我就知道你很特别。<br>
+      愿意给我一个机会，<br>
+      做我的女朋友/男朋友吗？
+    </p>
+    <div class="buttons">
+      <button class="yes-btn" onclick="sayYes()">💖 我愿意！</button>
+      <button class="no-btn" id="noBtn" onclick="runAway()">😅 让我想想</button>
+    </div>
+  </div>
+
+  <script>
+    function sayYes() {
+      alert("🎉 太好了！我们在一起吧！💕💕💕\n我爱你！");
+    }
+
+    let clickCount = 0;
+    const noMessages = [
+      "再考虑一下嘛~ 😊",
+      "真的不考虑一下吗？💖",
+      "我会对你很好的！🥺",
+      "点“我愿意”吧，求你了~ 🙏"
+    ];
+
+    function runAway() {
+      const noBtn = document.getElementById('noBtn');
+      if (clickCount < noMessages.length) {
+        alert(noMessages[clickCount]);
+        clickCount++;
+      }
+
+      // 让“再想想”按钮随机乱跑（增加趣味性）
+      const x = Math.random() * (window.innerWidth - 200);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.position = 'fixed';
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    }
+  </script>
+
+</body>
+</html>
